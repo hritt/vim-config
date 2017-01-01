@@ -1,0 +1,21 @@
+# vim & gedit
+*~
+.*~
+
+# netrw
+.netrwhist
+
+# vim swp file
+*.swp
+
+# auto-generated tag files
+tags
+
+# session
+Session.vim
+
+# mac OS
+*.DS_Store
+
+# sublime text
+*.dump
