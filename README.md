@@ -1,7 +1,5 @@
 # vim-config
 
-[TOC]
-
 ### To install it in linux, do:
 - remove your ~/.vim if it exists
 - `$git clone https://github.com/hritt/vim-config.git ~/.vim`, it should be clone to ~/.vim
@@ -18,8 +16,8 @@
 	* DoxygenToolkit
 	* tetris
 - **autoload**
-- **bundle** - use Vundle to manager plugin
-	* [Vundle.vim](https://github.com/kien/ctrlp.vim)
+	* [plug](https://github.com/junegunn/vim-plug)<!-- use plug instead of bundle -->
+- **plugged**
 	* [ctrlp.vim](https://github.com/kien/ctrlp.vim)
 	* [nerdtree](https://github.com/scrooloose/nerdtree)
 	* tabular: needed by vim-markdown
