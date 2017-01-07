@@ -26,5 +26,7 @@
 	* tlib_vim: needed by vim-snipmate
 	* [vim-snipmate](https://github.com/garbas/vim-snipmate): need [snippets](http://gthub.com/honza/vim-snippets/tree/master/snippets)
 <!--* [vim-airline](https://github.com/vim-airline/vim-airline): nice looking using [powerline-fonts](https://github.com/powerline/fonts/) -->
+	* [incsearch.vim](https://github.com/haya14busa/incsearch.vim)
+	* [incsearch-fuzzy.vim](https://github.com/haya14busa/incsearch-fuzzy.vim)
 - **snippets** - snippets files
 

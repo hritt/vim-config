@@ -39,6 +39,15 @@ Plug 'garbas/vim-snipmate'  " SnipMate depends on vim-addon-mw-utils and tlib
 "let g:airline_left_sep = '▶'      " if not use powerline symbols, can use these
 "let g:airline_right_sep = '◀'
 
+Plug 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+Plug 'haya14busa/incsearch-fuzzy.vim'
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
 call plug#end()
 
 """""""""" base """"""""""
@@ -77,16 +86,36 @@ call plug#end()
 "set cmdheight=3    " 设置命令行高度
 "set ruler          " 标尺功能，显示当前光标所在行列号
 
+function! BufTotalNum()
+    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+endfunction
+function! FileSize(f)
+    let l:size = getfsize(expand(a:f))
+    if l:size == 0 || l:size == -1 || l:size == -2
+        return ''
+    endif
+    if l:size < 1024
+        return l:size.'bytes'
+    elseif l:size < 1024*1024
+        return printf('%.1f', l:size/1024.0).'k'
+    elseif l:size < 1024*1024*1024
+        return printf('%.1f', l:size/1024.0/1024.0) . 'm'
+    else
+        return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
+    endif
+endfunction
+
  set laststatus=2 "显示状态栏(默认值为1, 无法显示状态栏)
- set statusline =%2*%-3.3n%0*\      " buffer number
- set statusline+=%F\                " full file path
- set statusline+=%h%1*%m%r%w%0*     " flag
+ set statusline+=%1*[B\ %n:%{BufTotalNum()}]%0*  " buffer
+ set statusline+=%2*\ %F\ %0*           " full file path
+ set statusline+=%3*%{FileSize(@%)}%0*   " file size
+ set statusline+=%h%4*%m%r%w%0*     " flag
  set statusline+=[%{&fileencoding}, " encoding
  set statusline+=%{&fileformat}]    " file format
  set statusline+=%=                 " right align
- set statusline+=%-20{strftime(\"<%y-%m-%d\ %H:%M>\",getftime(expand(\"%\")))}  " modify time
+ set statusline+=%-22{strftime(\"<Mod\ %y-%m-%d\ %H:%M>\",getftime(expand(\"%\")))}  " modify time
  set statusline+=0x%-4B\            " current char
- set statusline+=%-10.(%lL,%c%VC%)\ %<%P   " offset
+ set statusline+=%-6.(%lL,%c%VC%)\ %<%P   " offset
 
 " for vim-syntastic/syntastic
  set statusline+=%#warningmsg#
@@ -96,15 +125,24 @@ call plug#end()
 " maybe cover colorscheme
 "hi StatusLine   term=bold,reverse cterm=bold,reverse
 "hi StatusLineNC term=reverse      cterm=reverse
- hi User1        term=inverse,bold cterm=inverse,bold ctermfg=Red
-"hi User2        term=bold         cterm=bold         ctermfg=Yellow
-"hi User3        term=inverse,bold cterm=inverse,bold ctermfg=Blue
-"hi User4        term=inverse,bold cterm=inverse,bold ctermfg=LightBlue
+ hi User1        term=bold         cterm=bold         ctermfg=Yellow    ctermbg=238
+ hi User2        term=inverse      cterm=inverse      ctermfg=244       ctermbg=LightBlue
+ hi User3        term=inverse      cterm=inverse      ctermfg=250       ctermbg=8
+ hi User4        term=inverse,bold cterm=inverse,bold ctermfg=Red       
 "hi User5        term=inverse,bold cterm=inverse,bold ctermfg=Red       ctermbg=Green
 "hi Folded       term=standout     cterm=bold         ctermfg=Blue      ctermbg=Black
 "hi FoldColumn   term=standout                        ctermfg=DarkBlue  ctermbg=Black
 "hi Comment      term=bold                            ctermfg=DarkCyan
 "hi MatchParen   term=bold         cterm=bold,reverse ctermfg=DarkBlue  ctermbg=Black  " Parenthesis checking
+
+
+
+"set statusline=%<%1*[B-%n]%*
+"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
+"set statusline+=%3*\ %{File_size(@%)}\ %*
+"set statusline+=%4*\ %F\ %*
+"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
+
 
 "set textwidth=78   " 设置光标折行宽度,会被本配置文件之后读取的配置文件覆盖而失效
  set linebreak      " 不在单词中间断行
