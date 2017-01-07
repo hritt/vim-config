@@ -20,14 +20,11 @@
 - **plugged**
 	* [ctrlp.vim](https://github.com/kien/ctrlp.vim)
 	* [nerdtree](https://github.com/scrooloose/nerdtree)
-	* tabular: needed by vim-markdown
-	* [vim-markdown](https://github.com/plasticboy/vim-markdown)
 	* [nerdcommenter](https://github.com/scrooloose/nerdcommenter)
 	* [syntastic](https://github.com/scrooloose/syntastic)
 	* vim-addon-mw-utils: needed by vim-snipmate
 	* tlib_vim: needed by vim-snipmate
-	* [vim-snipmate](https://github.com/garbas/vim-snipmate)
-	* [snipmate](https://github.com/garbas/vim-snipmate): need [snippets](http://gthub.com/honza/vim-snippets/tree/master/snippets)
-	* [vim-airline](https://github.com/vim-airline/vim-airline): nice looking using [powerline-fonts](https://github.com/powerline/fonts/)
+	* [vim-snipmate](https://github.com/garbas/vim-snipmate): need [snippets](http://gthub.com/honza/vim-snippets/tree/master/snippets)
+<!--* [vim-airline](https://github.com/vim-airline/vim-airline): nice looking using [powerline-fonts](https://github.com/powerline/fonts/) -->
 - **snippets** - snippets files
 

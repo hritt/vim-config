@@ -13,9 +13,6 @@ Plug 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"Plug 'godlygeek/tabular'  " tabular plugin must come before vim-markdown
-"Plugin 'plasticboy/vim-markdown'
-
 Plug 'iamcco/markdown-preview.vim'
 " :MarkdownPreview
 
