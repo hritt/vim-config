@@ -64,7 +64,7 @@ call plug#end()
  set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 " 编码的自动识别
 
 """""""""" display """"""""""
- set lines=40 "columns=100 " 设置窗口高和宽，Ubuntu默认为80*24
+ set lines=40 columns=100 " 设置窗口高和宽，Ubuntu默认为80*24
  set number                " 显示行号
 "set cursorline            " 高亮光标所在行
 "set cursorcolumn          " 高亮光标所在列
