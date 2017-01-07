@@ -1,6 +1,6 @@
 # vim-config
 
-[TOC]
+[toc]
 
 ### To install it in linux, do:
 - remove your ~/.vim if it exists
