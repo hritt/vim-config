@@ -79,7 +79,7 @@ call plug#end()
  set t_Co=256          " 256色
  set background=dark   " 背景色,对于有些配色方案无效
  colorscheme mustang   " 配色方案,自带配色推荐torte
- 
+
  set title          " 标题栏显示 filename [+=-] (path) - VIM
 "set showcmd        " 命令行显示命令,Visual模式显示选择区域大小，缺省打开
 "set showmode       " 命令行显示vim当前模式，缺省打开
@@ -128,21 +128,12 @@ endfunction
  hi User1        term=bold         cterm=bold         ctermfg=Yellow    ctermbg=238
  hi User2        term=inverse      cterm=inverse      ctermfg=244       ctermbg=LightBlue
  hi User3        term=inverse      cterm=inverse      ctermfg=250       ctermbg=8
- hi User4        term=inverse,bold cterm=inverse,bold ctermfg=Red       
+ hi User4        term=inverse,bold cterm=inverse,bold ctermfg=Red
 "hi User5        term=inverse,bold cterm=inverse,bold ctermfg=Red       ctermbg=Green
 "hi Folded       term=standout     cterm=bold         ctermfg=Blue      ctermbg=Black
 "hi FoldColumn   term=standout                        ctermfg=DarkBlue  ctermbg=Black
 "hi Comment      term=bold                            ctermfg=DarkCyan
 "hi MatchParen   term=bold         cterm=bold,reverse ctermfg=DarkBlue  ctermbg=Black  " Parenthesis checking
-
-
-
-"set statusline=%<%1*[B-%n]%*
-"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
-"set statusline+=%3*\ %{File_size(@%)}\ %*
-"set statusline+=%4*\ %F\ %*
-"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
-
 
 "set textwidth=78   " 设置光标折行宽度,会被本配置文件之后读取的配置文件覆盖而失效
  set linebreak      " 不在单词中间断行
@@ -197,9 +188,14 @@ endif
 "let Tlist_Use_Right_Window=1    " 在右侧窗口中显示taglist窗口，缺省显示在左侧
 "let Tlist_Auto_Open=1           " 启动VIM后自动打开taglist窗口
 
+" bufexplorer
+ let g:bufExplorerSplitHorzSize=10     " New split window is n rows high.
+ let g:bufExplorerVertSize=10          " New split window is n columns wide.
+ nnoremap <silent> <c-F11> :BufExplorerVerticalSplit<CR>
+
 " WinManager "
 " 如果想显示taglist（即tagexplorer）窗口，必须先有taglist插件
- let g:winManagerWindowLayout='FileExplorer|TagList'  " 显示的窗口和布局
+ let g:winManagerWindowLayout='FileExplorer,BufExplorer|TagList'  " 显示的窗口和布局
  let g:persistentBehaviour=0     " 若是最后一个窗口，则退出vim
  nmap wm :WMToggle<cr>           " 在normal状态下输入 wm 开启
 "map <c-w><c-f> :FirstExplorerWindow<cr>  " 打开文件浏览器中第一个文件夹
@@ -224,7 +220,7 @@ endif
  inoremap ( ()<ESC>i
  inoremap [ []<ESC>i
  inoremap { {}<ESC>i
- inoremap < <><ESC>i
+"inoremap < <><ESC>i  " cout<<
 
 " <F5>编译和运行C++程序
  map <F5> :call CompileRunGpp()<CR>

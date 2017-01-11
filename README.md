@@ -11,6 +11,7 @@
 - **colors** - some colors scheme
 - **plugin**
 	* taglist: taglist.vim, taglist.txt
+	* bufexplorer: bufexplorer.vim, bufexplorer.txt
 	* winmanager: winmanager.vim, winfileexplorer.vim, wintagexplorer.vim, winmanager.txt. If you want to show tagexplorer, you should have taglist first.
 	* a
 	* DoxygenToolkit
