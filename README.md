@@ -5,6 +5,7 @@
 - `$git clone https://github.com/hritt/vim-config.git ~/.vim`, it should be clone to ~/.vim
 - `$ln ~/.vim/vimrc ~/.vimrc`
 - install ctags `$sudo apt-get install ctags`
+- start vim `$vi`, and install plugin by *plug* use `:PlugInstall`
 
 ### Introduce:
 - **doc** - chinese help document for Vim version 7.3, remember to add "set helplang=cn". and some plugins help documents

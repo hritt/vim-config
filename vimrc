@@ -2,6 +2,12 @@
 " *** 双引号后有空格，注释的是说明
 
 """""""""" vim-plug """"""""""
+" 如果没安装plug，则安装
+if !filereadable( expand('~/.vim/autoload/plug.vim') )
+	echo "Installing plug.vim.."
+	!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'kien/ctrlp.vim'
@@ -220,6 +226,7 @@ endif
  inoremap ( ()<ESC>i
  inoremap [ []<ESC>i
  inoremap { {}<ESC>i
+ inoremap " ""<ESC>i
 "inoremap < <><ESC>i  " cout<<
 
 " <F5>编译和运行C++程序
