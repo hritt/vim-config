@@ -6,6 +6,7 @@
 if !filereadable( expand('~/.vim/autoload/plug.vim') )
 	echo "Installing plug.vim.."
 	!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " 如果不想显示curl输出，在!前添加silent即可
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -232,23 +233,29 @@ endif
 " <F5>编译和运行C++程序
  map <F5> :call CompileRunGpp()<CR>
 func! CompileRunGpp()
- exec "w"
- exec "!g++ % -o %<"
- exec "! ./%<"
+    exec "w"
+    exec "!g++ % -o %<"
+    exec "! ./%<"
 endfunc
 
 map <C-A> ggVGY
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 判断操作系统
-"if has("unix")  "linux
-"elseif has("mac")
-"elseif has("win16") || has("win32") || has("win64") || has("win95")  "windows
-"endif
+"""""""""" different OS """"""""""
+if has("mac")
+    set backspace=2  " 解决delete无法删除问题
+endif
 
-" 判断是终端还是gvim
-"if has("gui_running")
-"else
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" 判断操作系统
+"if has("win16") || has("win32") || has("win64")
+"    echo "windows"
+"endif
+"if has("unix") && !has("mac")
+"    echo "linux"
+"endif
+"if has("mac")
+"    echo "mac"
 "endif
 
 " 从系统剪切板中复制，剪切，粘贴
