@@ -1,0 +1,38 @@
+"""""""""" language """"""""""
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+"""""""""" display """"""""""
+set number
+syntax on
+set title
+
+set laststatus=2
+set statusline+=%h%4*%m%r%w%0*
+set statusline+=[%{&fileencoding},
+set statusline+=%{&fileformat}]
+set statusline+=%=
+set statusline+=%-22{strftime(\"<Mod\ %y-%m-%d\ %H:%M>\",getftime(expand(\"%\")))}
+set statusline+=%-6.(%lL,%c%VC%)\ %<%P
+
+hi User4        term=inverse,bold cterm=inverse,bold ctermfg=Red
+
+set tabstop=4
+set shiftwidth=4
+set cindent
+
+"""""""""" search  """""""""
+set hlsearch
+set incsearch
+set ignorecase
+
+"""""""""" edit  """""""""
+filetype plugin indent on
+
+"""""""""" key mapping """"""""""
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
+inoremap " ""<ESC>i
+
+map <C-A> ggVGY
+
